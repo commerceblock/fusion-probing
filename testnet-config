@@ -1,0 +1,2 @@
+network=testnet
+disable-plugin=bcli

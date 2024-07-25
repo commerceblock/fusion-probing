@@ -1,0 +1,6 @@
+disable-plugin=bcli
+network=bitcoin
+bitcoin-rpcconnect=
+bitcoin-rpcport=
+bitcoin-rpcuser=
+bitcoin-rpcpassword=
