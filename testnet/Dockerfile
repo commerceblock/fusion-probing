@@ -15,10 +15,6 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y nano && \
     apt-get install -y lightningd && \
-    mkdir -p /root/.lightning/plugins && \
-    cd /root/.lightning/plugins && \
-    wget https://github.com/nbd-wtf/trustedcoin/releases/download/v0.7.0/trustedcoin-v0.7.0-linux-amd64.tar.gz && \
-    tar -xvf trustedcoin-v0.7.0-linux-amd64.tar.gz && \
     # Install electrum libraries
     apt-get install -y python3-pyqt5 libsecp256k1-dev python3-cryptography && \
     wget https://download.electrum.org/4.5.5/Electrum-4.5.5.tar.gz && \
@@ -31,8 +27,6 @@ RUN apt-get update && \
     
 # Copy testnet-config as config file inside ~/.lightning/
 COPY testnet-config /root/.lightning/config
-# COPY config /root/.lightning/config
-
 
 # Copy the current directory contents into the container at /usr/src/app
 COPY . .

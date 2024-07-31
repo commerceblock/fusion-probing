@@ -18,11 +18,11 @@ config.read('config.ini')
 
 # Get the configuration values
 db_credentials = {
-    'dbname': config['database']['dbname'],
-    'user': config['database']['user'],
-    'password': config['database']['password'],
-    'host': config['database']['host'],
-    'port': config['database']['port']
+    'dbname': config['database']['db_name'],
+    'user': config['database']['db_user'],
+    'password': config['database']['db_password'],
+    'host': config['database']['db_host'],
+    'port': config['database']['db_port']
 }
 
 network = config.get('settings', 'network', fallback='testnet')
@@ -38,7 +38,7 @@ else:
 
 print('RPC Set was:', rpc_path)
 
-table_name = config['table']['name']
+table_name = config['table']['db_table_name']
 print('Table name:', table_name)
 
 # Environment/Configuration variables
@@ -321,7 +321,7 @@ if run_full_probe:
                 insert_channel(connection, probe['destination'], probe['error']['failcodename'], probe['error']['erring_node'],probe['error']['erring_channel'],json.dumps(probe['route']),probe['started_at'],100000000)
             else:
                 print('No route found')
-                insert_channel(connection, probe['destination'], "NO_ROUTE", "NONE", "NONE", "NONE", "NONE", "NONE")
+                insert_channel(connection, probe['destination'], "NO_ROUTE", "NONE", "NONE", "NONE", probe['started_at'], "NONE")
 elif withdraw_now == True:
     print('Withdrawing to the specified address:', withdrawal_address)
     try:
